@@ -22,7 +22,7 @@ int main()
     }
 
     {
-        sprintf(str1 , "sprintf str1 %s" , str); //把格式字符串 输入给 另一个字符串 返回值也是 字符串的长度
+        sprintf(str1 , "sprintf str1 %s" , str); //把格式字符串 输入给 另一个字符串 返回值也是 字符串的长度  字符串拼接
         printf("%s\n",str1);
     }
 

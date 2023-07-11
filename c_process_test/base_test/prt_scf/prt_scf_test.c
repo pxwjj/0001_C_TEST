@@ -57,9 +57,43 @@ int scanf_RegEx_test()
     return 0;
 }
 
+/**
+ * fprintf (out put to file)
+ * fscanf (file is stdin)
+*/
+int file_fscanf_test()
+{
+    char str[__MAX__] = {0};
+    char tmp[__MAX__][__MAX__] = {0};
+
+    int ret = 0, k = 0;
+
+    if (scanf("%s", str) == 1)
+        printf("out put:%s\n", str);
+
+    FILE *fp = fopen("./output", "a+");
+    fprintf(fp, "wpx key english string is: %s \n", str); //output file has "wpx key english string is: aa"
+    fclose(fp);
+
+    fp = fopen("./output", "r+");
+    printf("--output file has:--\n");
+    while ( (ret = fscanf(fp , "%[a-zA-Z0-9: ]s", tmp[k++])) == 1 )
+    {
+        fgetc(fp);
+    }
+    fclose(fp);
+
+    for (int i = 0; i < k; i++)
+    {
+        printf("%s\n", tmp[i]);
+    }
+
+    return 0;
+}
+
 int main()
 {
-    scanf_RegEx_test();
+    file_fscanf_test();
 
     return 0;
 }
