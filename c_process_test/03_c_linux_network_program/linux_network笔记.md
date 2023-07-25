@@ -72,8 +72,35 @@
    6. 为什么是三次握手，而不是两次或者四次
 
       1. A对B说：你好，我是A。
-      2. B对A说：你好A，我是B，我可以收到你的消息。
-      3. A对B说：你好A，我也可以收到你的消息。
+      2. B对A说：你好A，我是B，我可以听到。
+      3. A对B说：你好B，我也可以听到。
       4. 此时连通建立成功。
       5. 如果只有两次，那么B不能确定A能不能收到B的消息。
       6. 如果有四次 就有点多余。
+
+   7. 四次挥手
+
+      1. A对B说：走吧，不玩了，撤
+      2. B对A说：行。然后B处理一些操作。
+      3. B对A说：走吧，没事了，撤
+      4. A对B说：ok，走。
+
+3. **套接字编程**
+
+   1. 网络字节序 是大端
+   2. honl(): 主机字节序，转成网络字节序
+   3. `tcp_socket = socket(AF_INET, SOCK_STREAM, 0);`
+   4. `udp_socket = socket(AF_INET, SOCK_DGRAM, 0);`
+   5. server:
+      1. `listenfd = socket()` , 返回一个套接字。
+      2. `bind(listenfd, 服务器地址和端口)`, 将套接字，绑定到，设置的ip和端口上。
+      3. `listen(listenfd, 连接队列长度)`, 开始监听,使listenfd成为一个监听描述符.
+      4. `connfd = accept(listenfd, 客户端地址端口)`,阻塞等待客户端连接。返回用于读写数据给客户端的socket文件描述符（套接字).
+      5. `read(connfd, buf, size);write(connfd, buf, size)`
+      6. `close(connfd) `关闭
+   6. client:
+      1. `fd = socket();`分配一个套接字
+      2. `connect(fd, 服务器地址端口);` 发送连接请求,阻塞等待服务器相应
+      3. `read(fd, buf, size);write(fd, buf, size)`
+      4. `close(fd);`
+
