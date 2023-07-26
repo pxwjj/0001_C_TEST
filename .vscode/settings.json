@@ -4,6 +4,9 @@
         "string.h": "c",
         "stdio.h": "c",
         "errno.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "socket.h": "c",
+        "strings.h": "c",
+        "in.h": "c"
     }
 }

@@ -1,6 +1,6 @@
 /**
  * server
- * ine
+ * 练习 tcp server and client
 */
 
 #include <stdio.h>
